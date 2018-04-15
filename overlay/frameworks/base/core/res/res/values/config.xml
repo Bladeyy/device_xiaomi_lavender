@@ -45,6 +45,15 @@
     <string name="config_mms_user_agent_profile_url" translatable="false"
             >http://www.google.com/oha/rdf/ua-profile-kila.xml</string>
 
+    <!-- Default value for led color when battery is low on charge -->
+    <integer name="config_notificationsBatteryLowARGB">0xFFFFFFFF</integer>
+
+    <!-- Default value for led color when battery is medium charged -->
+    <integer name="config_notificationsBatteryMediumARGB">0xFFFFFFFF</integer>
+
+    <!-- Default value for led color when battery is fully charged -->
+    <integer name="config_notificationsBatteryFullARGB">0xFFFFFFFF</integer>
+
     <!-- List of regexpressions describing the interface (if any) that represent tetherable
          USB interfaces.  If the device doesn't want to support tething over USB this should
          be empty.  An example would be "usb.*" -->
@@ -507,7 +516,7 @@
     <integer-array name="config_keyboardTapVibePattern">
         <item>10</item>
     </integer-array>
-	
+
 	    <!-- Enable ACS (auto channel selection) for Wifi hotspot (SAP) -->
     <bool name="config_wifi_softap_acs_supported">true</bool>
 
@@ -519,5 +528,5 @@
 
     <!-- Regex of wired ethernet ifaces -->
     <string name="config_ethernet_iface_regex">eth0</string>
-	
+
 </resources>
