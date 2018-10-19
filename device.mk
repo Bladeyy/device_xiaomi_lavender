@@ -416,6 +416,10 @@ PRODUCT_PACKAGES += \
     libstdc++.vendor \
     vndk_package
 
+# Wallpapers
+PRODUCT_PACKAGES += \
+    WallpapersBReel2018
+
 # Wifi
 PRODUCT_PACKAGES += \
     android.hardware.wifi@1.0-service \
