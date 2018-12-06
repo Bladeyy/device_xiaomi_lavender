@@ -21,7 +21,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
    ro.opengles.version=196610 \
    vendor.qcom.bluetooth.soc=cherokee \
    af.fast_track_multiplier=1 \
-   vendor.audio_hal.period_size=192 \
    ro.vendor.audio.sdk.fluencetype=none \
    persist.vendor.audio.fluence.voicecall=true \
    persist.vendor.audio.fluence.voicerec=false \
@@ -65,3 +64,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
    rild.libpath=/system/vendor/lib64/libril-qc-hal-qmi.so \
    ro.vendor.audio.voice.volume.boost=manual \
    sys.autosuspend.timeout=500000
+
+#Set AudioFlinger client heap size
+PRODUCT_PROPERTY_OVERRIDES += \
+   vendor.audio_hal.period_size=192 \
+   vendor.audio_hal.period_multiplier=3 \
+   vendor.audio.adm.buffering.ms=2
