@@ -151,6 +151,10 @@ PRODUCT_PACKAGES += \
     com.quicinc.cne \
     services-ext
 
+# Device-specific settings
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
 # Display
 PRODUCT_PACKAGES += \
     android.hardware.graphics.allocator@2.0-impl \
@@ -176,10 +180,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     android.hardware.configstore@1.1-service \
     android.hardware.broadcastradio@1.0-impl
-
-# Doze
-PRODUCT_PACKAGES += \
-    XiaomiDoze
 
 # DRM
 PRODUCT_PACKAGES += \
