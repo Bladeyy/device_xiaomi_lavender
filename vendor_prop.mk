@@ -65,6 +65,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
    ro.vendor.audio.voice.volume.boost=manual \
    sys.autosuspend.timeout=500000
 
+# ART
+PRODUCT_PROPERTY_OVERRIDES += \
+   dalvik.vm.dex2oat-filter=speed \
+   dalvik.vm.image-dex2oat-filter=speed \
+   ro.vendor.qti.am.reschedule_service=true \
+   ro.sys.fw.dex2oat_thread_count=8 \
+   dalvik.vm.boot-dex2oat-threads=8 \
+   dalvik.vm.dex2oat-threads=8
+
 #Set AudioFlinger client heap size
 PRODUCT_PROPERTY_OVERRIDES += \
    vendor.audio_hal.period_size=192 \
