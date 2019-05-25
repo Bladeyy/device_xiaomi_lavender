@@ -336,18 +336,19 @@ PRODUCT_PACKAGES += \
 # Ramdisk
 PRODUCT_PACKAGES += \
     init.class_main.sh \
-    init.msm.usb.configfs.rc \
     init.qcom.early_boot.sh \
     init.qcom.post_boot.sh \
-    init.qcom.rc \
     init.qcom.sensors.sh \
     init.qcom.sh \
-    init.qcom.usb.rc \
     init.qcom.usb.sh \
     init.qti.qseecomd.sh \
+    fstab.qcom \
+    init.msm.usb.configfs.rc \
+    init.qcom.usb.rc \
+    init.qcom.rc \
+    init.qcom.usb.rc \
     init.target.rc \
-    ueventd.qcom.rc \
-    fstab.qcom
+    ueventd.qcom.rc
 
 # RCS
 PRODUCT_PACKAGES += \
