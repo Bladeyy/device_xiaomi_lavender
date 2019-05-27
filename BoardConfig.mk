@@ -40,6 +40,10 @@ TARGET_2ND_CPU_VARIANT := cortex-a73
 
 TARGET_USES_64_BIT_BINDER := true
 
+# Assert
+TARGET_BOARD_INFO_FILE := $(DEVICE_PATH)/board-info.txt
+TARGET_OTA_ASSERT_DEVICE := lavender
+
 # Bootloader
 TARGET_BOOTLOADER_BOARD_NAME := sdm660
 TARGET_NO_BOOTLOADER := true
@@ -62,6 +66,10 @@ TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 TARGET_KERNEL_SOURCE := kernel/xiaomi/lavender
 TARGET_KERNEL_CONFIG := lavender-perf_defconfig
 
+# Platform
+TARGET_BOARD_PLATFORM := sdm660
+TARGET_BOARD_PLATFORM_GPU := qcom-adreno512
+
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "qualcomm-hidl"
 
@@ -73,8 +81,12 @@ QCOM_BT_USE_BTNV := true
 TARGET_USE_QTI_BT_STACK := true
 
 # Camera
+TARGET_USES_QTI_CAMERA_DEVICE := true
 BOARD_QTI_CAMERA_32BIT_ONLY := true
 USE_DEVICE_SPECIFIC_CAMERA := true
+
+# CNE and DPM
+BOARD_USES_QCNE := true
 
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
@@ -101,12 +113,23 @@ TARGET_USES_OVERLAY := true
 USE_OPENGL_RENDERER := true
 BOARD_USE_LEGACY_UI := true
 
+# DRM
+TARGET_ENABLE_MEDIADRM_64 := true
+
 # DT2W
 TARGET_TAP_TO_WAKE_NODE := "/proc/tp_gesture"
+
+# Filesystem
+TARGET_FS_CONFIG_GEN := $(DEVICE_PATH)/config.fs
+
+# FM
+BOARD_HAVE_QCOM_FM := true
+BOARD_HAS_QCA_FM_SOC := "cherokee"
 
 # GPS
 TARGET_NO_RPC := true
 USE_DEVICE_SPECIFIC_GPS := true
+BOARD_VENDOR_QCOM_GPS_LOC_API_HARDWARE := $(TARGET_BOARD_PLATFORM)
 
 # HIDL
 DEVICE_FRAMEWORK_COMPATIBILITY_MATRIX_FILE := $(DEVICE_PATH)/vendor_framework_compatibility_matrix.xml
@@ -149,7 +172,8 @@ TARGET_COPY_OUT_VENDOR := vendor
 TARGET_USES_INTERACTION_BOOST := true
 
 # Recovery
-TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/recovery.fstab
+TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+TARGET_RECOVERY_FSTAB := $(DEVICE_PATH)/rootdir/etc/fstab.qcom
 
 # RIL
 ENABLE_VENDOR_RIL_SERVICE := true
@@ -162,8 +186,21 @@ VENDOR_SECURITY_PATCH := 2018-06-05
  # Seccomp
 BOARD_SECCOMP_POLICY := $(DEVICE_PATH)/seccomp
 
+# SELinux
+include device/qcom/sepolicy/sepolicy.mk
+BOARD_SEPOLICY_DIRS += $(DEVICE_PATH)/sepolicy/vendor
+BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
+BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
+
 # Sensors
 USE_SENSOR_MULTI_HAL := true
+
+# Treble
+BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
+BOARD_VNDK_VERSION := current
+PRODUCT_FULL_TREBLE_OVERRIDE := true
+PRODUCT_VENDOR_MOVE_ENABLED := true
+TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
 # Wifi
 BOARD_HAS_QCOM_WLAN := true
@@ -176,60 +213,21 @@ BOARD_WPA_SUPPLICANT_PRIVATE_LIB := lib_driver_cmd_$(BOARD_WLAN_DEVICE)
 WIFI_DRIVER_FW_PATH_AP := "ap"
 WIFI_DRIVER_FW_PATH_STA := "sta"
 WIFI_DRIVER_FW_PATH_P2P := "p2p"
-WIFI_DRIVER_MODULE_PATH := "/system/lib/modules/wlan.ko"
+WIFI_DRIVER_OPERSTATE_PATH := "/sys/class/net/wlan0/operstate"
+WIFI_HIDL_FEATURE_DUAL_INTERFACE := true
 WPA_SUPPLICANT_VERSION := VER_0_8_X
 
 # QCOM
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_USE_SDCLANG := true
 
-# Set Header version for bootimage
-BOARD_BOOTIMG_HEADER_VERSION := 1
-BOARD_MKBOOTIMG_ARGS := --header_version $(BOARD_BOOTIMG_HEADER_VERSION)
-
-BOARD_PERSISTIMAGE_PARTITION_SIZE := 33554432
-BOARD_PERSISTIMAGE_FILE_SYSTEM_TYPE := ext4
-BOARD_FLASH_BLOCK_SIZE := 131072 # (BOARD_KERNEL_PAGESIZE * 64)
-
-#Enable split vendor image
-ENABLE_VENDOR_IMAGE := true
-ifeq ($(ENABLE_VENDOR_IMAGE), true)
-BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
-endif
-
-TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
-
-# Platform
-TARGET_BOARD_PLATFORM := sdm660
-
-BOARD_VENDOR_KERNEL_MODULES := \
-    $(KERNEL_MODULES_OUT)/wil6210.ko \
-    $(KERNEL_MODULES_OUT)/msm_11ad_proxy.ko \
-    $(KERNEL_MODULES_OUT)/qca_cld3_wlan.ko \
-    $(KERNEL_MODULES_OUT)/rdbg.ko \
-    $(KERNEL_MODULES_OUT)/mpq-adapter.ko \
-    $(KERNEL_MODULES_OUT)/mpq-dmx-hw-plugin.ko
-
-# Enable dex pre-opt to speed up initial boot
+# Dex
 ifeq ($(HOST_OS),linux)
-    ifeq ($(WITH_DEXPREOPT),)
-      WITH_DEXPREOPT := true
-      WITH_DEXPREOPT_PIC := true
-      ifneq ($(TARGET_BUILD_VARIANT),user)
-        # Retain classes.dex in APK's for non-user builds
-        DEX_PREOPT_DEFAULT := nostripping
-      endif
-    endif
+  ifneq ($(TARGET_BUILD_VARIANT),eng)
+    WITH_DEXPREOPT ?= true
+  endif
 endif
-
-#Enable DRM plugins 64 bit compilation
-TARGET_ENABLE_MEDIADRM_64 := true
-
-#Flag to enable System SDK Requirements.
-BOARD_SYSTEMSDK_VERSIONS:=28
-
-#All vendor APK will be compiled against system_current API set.
-BOARD_VNDK_VERSION := current
+WITH_DEXPREOPT_BOOT_IMG_AND_SYSTEM_SERVER_ONLY ?= true
 
 # Inherit from the proprietary version
 -include vendor/xiaomi/lavender/BoardConfigVendor.mk
