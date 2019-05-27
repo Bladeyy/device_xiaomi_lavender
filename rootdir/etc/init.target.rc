@@ -122,6 +122,10 @@ on boot
 #Create folder dump yuv images while debugging
     mkdir /data/vendor/camera 0770 camera camera
 
+#DT2W
+    chown system system /proc/tp_gesture
+    chmod 0660 /proc/tp_gesture
+
 #Load WLAN driver
    insmod /vendor/lib/modules/qca_cld3_wlan.ko
 #USB controller configuration
@@ -257,14 +261,14 @@ service adsprpcd /vendor/bin/adsprpcd audiopd
 service vendor.mlipay-1-1 /vendor/bin/mlipayd@1.1
     class main
     user system
-    group system	
-	
-	
+    group system
+
+
 service vendor.mtdservice-1-2 /vendor/bin/mtd@1.2
     class main
     group system drmrpc
 
-	
+
 
 
 service fidoca /vendor/bin/fidoca
@@ -578,43 +582,43 @@ service loopback_spk1 /system/vendor/bin/loopback.sh 1 1
     group root
     disabled
     oneshot
-	
+
 service loopback_spk0 /system/vendor/bin/loopback.sh 1 0
     user root
     group root
     disabled
     oneshot
-	
+
 service loopback_rec1 /system/vendor/bin/loopback.sh 2 1
     user root
     group root
     disabled
     oneshot
-	
+
 service loopback_rec0 /system/vendor/bin/loopback.sh 2 0
     user root
     group root
     disabled
     oneshot
-	
+
 service loopback_hand1 /system/vendor/bin/loopback.sh 3 1
     user root
     group root
     disabled
     oneshot
-	
+
 service loopback_hand0 /system/vendor/bin/loopback.sh 3 0
     user root
     group root
     disabled
     oneshot
-	
+
 service loopback_sec1 /system/vendor/bin/loopback.sh 4 1
     user root
     group root
     disabled
     oneshot
-	
+
 service loopback_sec0 /system/vendor/bin/loopback.sh 4 0
     user root
     group root
@@ -626,7 +630,7 @@ service spk_playback1 /system/vendor/bin/loopback.sh 5 1
     group root
     disabled
     oneshot
-	
+
 service spk_playback0 /system/vendor/bin/loopback.sh 5 0
     user root
     group root
@@ -659,31 +663,31 @@ service loopback_mic22spk0 /system/vendor/bin/loopback.sh 12 0
 
 on property:sys.loopback-spk=1
     start loopback_spk1
-	
+
 on property:sys.loopback-spk=0
     start loopback_spk0
-	
+
 on property:sys.loopback-rec=1
     start loopback_rec1
-	
+
 on property:sys.loopback-rec=0
     start loopback_rec0
-	
+
 on property:sys.loopback-mic1=1
     start loopback_hand1
-	
+
 on property:sys.loopback-mic1=0
     start loopback_hand0
-	
+
 on property:sys.loopback-mic2=1
     start loopback_sec1
-	
+
 on property:sys.loopback-mic2=0
     start loopback_sec0
 
 on property:sys.spk-playback=1
     start spk_playback1
-	
+
 on property:sys.spk-playback=0
     start spk_playback0
 
@@ -713,7 +717,7 @@ service tinyhostless /system/bin/tinyhostless -D 0 -P 5 -C 11 -p 256 -n 2 -c 1 -
     oneshot
 
 on property:sys.tinyhostless=0
-    stop tinyhostless 
+    stop tinyhostless
 
 on property:sys.tinyhostless=1
     start tinyhostless
@@ -723,7 +727,7 @@ on property:sys.tinyhostless-spk=0
 
 on property:sys.tinyhostless-spk=1
     start tinyhostless_spk
-	
+
 #audio loopback test end
 on property:persist.sys.display_srgb=1
     write /sys/class/graphics/fb0/msm_fb_srgb 1
@@ -777,28 +781,28 @@ on property:sys.boot_completed=1
 	start nv_mac
 
 on property:sys.dynamic_debug=1
-   write /sys/kernel/debug/dynamic_debug/control "file q6afe.c +p" 
-   write /sys/kernel/debug/dynamic_debug/control "file q6adm.c +p" 
-   write /sys/kernel/debug/dynamic_debug/control "file msm-pcm-routing-v2.c +p" 
-   write /sys/kernel/debug/dynamic_debug/control "file msm-dai-q6-v2.c +p" 
-   write /sys/kernel/debug/dynamic_debug/control "file soc-core.c +p" 
-   write /sys/kernel/debug/dynamic_debug/control "file soc-dapm.c +p" 
-   write /sys/kernel/debug/dynamic_debug/control "file sdm660-internal.c +p" 
-   write /sys/kernel/debug/dynamic_debug/control "file sdm660-common.c +p" 
-   write /sys/kernel/debug/dynamic_debug/control "file msm-analog-cdc.c +p" 
+   write /sys/kernel/debug/dynamic_debug/control "file q6afe.c +p"
+   write /sys/kernel/debug/dynamic_debug/control "file q6adm.c +p"
+   write /sys/kernel/debug/dynamic_debug/control "file msm-pcm-routing-v2.c +p"
+   write /sys/kernel/debug/dynamic_debug/control "file msm-dai-q6-v2.c +p"
+   write /sys/kernel/debug/dynamic_debug/control "file soc-core.c +p"
+   write /sys/kernel/debug/dynamic_debug/control "file soc-dapm.c +p"
+   write /sys/kernel/debug/dynamic_debug/control "file sdm660-internal.c +p"
+   write /sys/kernel/debug/dynamic_debug/control "file sdm660-common.c +p"
+   write /sys/kernel/debug/dynamic_debug/control "file msm-analog-cdc.c +p"
    write /sys/kernel/debug/dynamic_debug/control "file msm-digital-cdc.c +p"
-   write /sys/kernel/debug/dynamic_debug/control "file wcd-mbhc-v2.c +p" 
+   write /sys/kernel/debug/dynamic_debug/control "file wcd-mbhc-v2.c +p"
 
 on property:sys.dynamic_debug=0
-   write /sys/kernel/debug/dynamic_debug/control "file q6afe.c -p" 
-   write /sys/kernel/debug/dynamic_debug/control "file q6adm.c -p" 
-   write /sys/kernel/debug/dynamic_debug/control "file msm-pcm-routing-v2.c -p" 
-   write /sys/kernel/debug/dynamic_debug/control "file msm-dai-q6-v2.c -p" 
-   write /sys/kernel/debug/dynamic_debug/control "file soc-core.c -p" 
-   write /sys/kernel/debug/dynamic_debug/control "file soc-dapm.c -p" 
-   write /sys/kernel/debug/dynamic_debug/control "file sdm660-internal.c -p" 
-   write /sys/kernel/debug/dynamic_debug/control "file sdm660-common.c -p" 
-   write /sys/kernel/debug/dynamic_debug/control "file msm-analog-cdc.c -p" 
+   write /sys/kernel/debug/dynamic_debug/control "file q6afe.c -p"
+   write /sys/kernel/debug/dynamic_debug/control "file q6adm.c -p"
+   write /sys/kernel/debug/dynamic_debug/control "file msm-pcm-routing-v2.c -p"
+   write /sys/kernel/debug/dynamic_debug/control "file msm-dai-q6-v2.c -p"
+   write /sys/kernel/debug/dynamic_debug/control "file soc-core.c -p"
+   write /sys/kernel/debug/dynamic_debug/control "file soc-dapm.c -p"
+   write /sys/kernel/debug/dynamic_debug/control "file sdm660-internal.c -p"
+   write /sys/kernel/debug/dynamic_debug/control "file sdm660-common.c -p"
+   write /sys/kernel/debug/dynamic_debug/control "file msm-analog-cdc.c -p"
    write /sys/kernel/debug/dynamic_debug/control "file msm-digital-cdc.c -p"
    write /sys/kernel/debug/dynamic_debug/control "file wcd-mbhc-v2.c -p"
 
@@ -813,4 +817,3 @@ on property:vendor.tp.grip_area=1
     write /proc/tp_grip_area 1
 on property:vendor.tp.grip_area=180
     write /proc/tp_grip_area 180
-
