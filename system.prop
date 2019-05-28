@@ -218,9 +218,6 @@ persist.radio.sib16_support=1
 ro.vendor.df.effect.conflict=1
 persist.sys.df.extcolor.proc=0
 
-#enable all system restart_level to relative
-persist.vendor.ssr.restart_level=ALL_ENABLE
-
 #thermal configs path
 sys.thermal.data.path=/data/vendor/thermal/
 
