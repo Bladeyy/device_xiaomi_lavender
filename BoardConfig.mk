@@ -91,10 +91,6 @@ BOARD_USES_QCNE := true
 # Charger
 BOARD_CHARGER_ENABLE_SUSPEND := true
 
-# CPUSets
-ENABLE_CPUSETS := true
-ENABLE_SCHEDBOOST := true
-
 # Crypto
 TARGET_HW_DISK_ENCRYPTION := true
 
