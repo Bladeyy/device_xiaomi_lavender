@@ -87,22 +87,6 @@ vendor/lib64/soundfx/libasphere.so
 vendor/lib64/soundfx/libqcbassboost.so
 vendor/lib64/soundfx/libqcvirt.so
 
-# Audio - hardware
-vendor/lib/hw/audio.primary.sdm660.so
-vendor/lib/libaudio_log_utils.so
-vendor/lib/libtinycompress_vendor.so
-vendor/lib/soundfx/libqcompostprocbundle.so
-vendor/lib/soundfx/libqcomvisualizer.so
-vendor/lib/soundfx/libqcomvoiceprocessing.so
-vendor/lib/soundfx/libvolumelistener.so
-vendor/lib64/hw/audio.primary.sdm660.so
-vendor/lib64/libaudio_log_utils.so
-vendor/lib64/libtinycompress_vendor.so
-vendor/lib64/soundfx/libqcompostprocbundle.so
-vendor/lib64/soundfx/libqcomvisualizer.so
-vendor/lib64/soundfx/libqcomvoiceprocessing.so
-vendor/lib64/soundfx/libvolumelistener.so
-
 # Audio ACDB
 vendor/etc/acdbdata/MTP/MTP_Bluetooth_cal.acdb
 vendor/etc/acdbdata/MTP/MTP_General_cal.acdb
@@ -128,8 +112,6 @@ vendor/lib64/hw/android.hardware.bluetooth@1.0-impl-qti.so
 vendor/lib64/libbtnv.so
 
 # Camera
-lib/libstdc++.so
-lib64/libstdc++.so
 vendor/etc/scve/facereco/gModel.dat
 vendor/etc/camera/beauty_ui9_intelligent_params.config
 vendor/etc/camera/camera_config.xml
@@ -254,7 +236,6 @@ vendor/lib/libscveObjectTracker.so
 vendor/lib/libscveObjectTracker_stub.so
 vendor/lib/libscvePanorama.so
 vendor/lib/libscvePanorama_lite.so
-vendor/lib/libstdc++.so
 vendor/lib/libvideoutils.so
 vendor/lib/libvidhance_gyro.so
 vendor/lib/libXMFD_AgeGender.so
@@ -1327,20 +1308,15 @@ vendor/lib64/libflp.so
 vendor/lib64/libgarden.so
 vendor/lib64/libgdtap.so
 vendor/lib64/libgeofence.so
-vendor/lib64/libgnss.so
-vendor/lib64/libgnsspps.so
-vendor/lib64/libgps.utils.so
 vendor/lib64/libizat_client_api.so
 vendor/lib64/libizat_core.so
 vendor/lib64/liblbs_core.so
 vendor/lib64/libloc_api_v02.so
-vendor/lib64/liblocation_api.so
 vendor/lib64/libloc_ds_api.so
 vendor/lib64/libloc_externalDr.so
 vendor/lib64/libloc_externalDrcore.so
 vendor/lib64/liblocationservice_glue.so
 vendor/lib64/liblocationservice.so
-vendor/lib64/libloc_core.so
 vendor/lib64/liblowi_client.so
 vendor/lib64/liblowi_wifihal.so
 vendor/lib64/libqdma.so
@@ -1746,7 +1722,6 @@ vendor/lib64/libsensor_reg.so
 vendor/lib64/libsensor1.so
 vendor/lib64/sensors.ssc.so
 vendor/lib64/sensors.elliptic.so
-vendor/lib64/libsensorndkbridge.so
 
 # Soter
 -app/SoterService/SoterService.apk
@@ -1795,21 +1770,17 @@ etc/wfdconfigsink.xml
 lib/com.qualcomm.qti.wifidisplayhal@1.0.so
 lib64/extractors/libmmparser.so
 lib64/libFileMux.so
-lib64/libdisplayconfig.so
 lib64/libmmparser_lite.so
 lib64/libmmosal.so
-lib64/libqdMetaData.system.so
 lib64/libwfdclient.so
 lib64/libwfdnative.so
 lib/extractors/libmmparser.so
 lib/libFileMux.so
-lib/libdisplayconfig.so
 lib/libmmparser_lite.so
 lib/libmmosal.so
 lib/libmmrtpdecoder.so
 lib/libmmrtpencoder.so
 lib/libOmxMux.so
-lib/libqdMetaData.system.so
 lib/libwfdavenhancements.so
 lib/libwfdcodecv4l2.so
 lib/libwfdcommonutils.so
