@@ -74,8 +74,6 @@ fi
 # Override USB default composition
 #
 # If USB persist config not set, set default configuration
-miui_release=`getprop ro.fota.oem`
-miui_debuggable=`getprop ro.debuggable`
 if [ "$(getprop persist.vendor.usb.config)" == "" -a \
 	"$(getprop init.svc.vendor.usb-gadget-hal-1-0)" != "running" ]; then
       if [ "$esoc_link" != "" ]; then
@@ -127,29 +125,8 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a \
 			      fi
 		      ;;
 	              "msm8998" | "sdm660" | "sdm636"| "apq8098_latv")
-					case "$miui_release" in
-						"")
-						case "$miui_debuggable" in
-							"1")
-								setprop persist.vendor.usb.config diag,serial_cdev,rmnet,adb
-							;;
-							*)
-								setprop persist.vendor.usb.config diag,serial_cdev,rmnet
-							;;
-						esac
-						;;
-						*)
-						case "$miui_debuggable" in
-							"1")
-								setprop persist.vendor.usb.config adb
-							;;
-							*)
-								setprop persist.vendor.usb.config none
-							;;
-						esac
-						;;
-				 	 esac
-					;;
+              setprop persist.vendor.usb.config diag,serial_cdev,rmnet,adb
+          ;;
 	              "sdm845" | "sdm710")
 		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
 		      ;;
