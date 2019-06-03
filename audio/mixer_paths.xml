@@ -385,7 +385,7 @@
     <ctl name="RDAC2 MUX" value="ZERO" />
 
     <!-- Interpolator chain controls -->
-	<!-- ADD RX Chain Controls --> 
+	<!-- ADD RX Chain Controls -->
 
     <ctl name="RX1 MIX1 INP1" value="ZERO" />
     <ctl name="RX2 MIX1 INP1" value="ZERO" />
@@ -440,7 +440,7 @@
 
 	<!-- smart PA TFA 9894 -->
 	<ctl name="TFA Profile" value="music" />
-	
+
     <!-- anc related -->
 
     <!-- vbat related data -->
@@ -908,7 +908,7 @@
     <path name="compress-offload-playback4">
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia11" value="1" />
     </path>
-	
+
     <path name="compress-offload-playback4 speaker">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia11" value="1" />
     </path>
@@ -978,7 +978,7 @@
     <path name="compress-offload-playback5">
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia12" value="1" />
     </path>
-	
+
     <path name="compress-offload-playback5 speaker">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia12" value="1" />
     </path>
@@ -1047,7 +1047,7 @@
     <path name="compress-offload-playback6">
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia13" value="1" />
     </path>
-	
+
     <path name="compress-offload-playback6 speaker">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia13" value="1" />
     </path>
@@ -1116,7 +1116,7 @@
     <path name="compress-offload-playback7">
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia14" value="1" />
     </path>
-	
+
     <path name="compress-offload-playback7 speaker">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia14" value="1" />
     </path>
@@ -1185,7 +1185,7 @@
     <path name="compress-offload-playback8">
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia15" value="1" />
     </path>
-	
+
     <path name="compress-offload-playback8 speaker">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia15" value="1" />
     </path>
@@ -1254,7 +1254,7 @@
     <path name="compress-offload-playback9">
         <ctl name="INT0_MI2S_RX Audio Mixer MultiMedia16" value="1" />
     </path>
-	
+
     <path name="compress-offload-playback9 speaker">
         <ctl name="PRI_MI2S_RX Audio Mixer MultiMedia16" value="1" />
     </path>
@@ -1391,7 +1391,7 @@
         <ctl name="INT0_MI2S_RX Port Mixer SLIM_8_TX" value="1" />
         <ctl name="INT0_MI2S_RX_DL_HL Switch" value="1" />
     </path>
-	
+
     <path name="play-fm speaker">
         <ctl name="SLIMBUS_8 LOOPBACK Volume" value="1" />
         <ctl name="PRI_MI2S_RX Port Mixer SLIM_8_TX" value="1" />
@@ -1965,7 +1965,7 @@
 
     <path name="sidetone-handset">
         <path name="sidetone-iir" />
-        <ctl name="IIR1 INP1 Volume" value="53" />
+        <ctl name="IIR1 INP1 Volume" value="73" />
         <ctl name="RX1 MIX2 INP1" value="IIR1" />
     </path>
 
@@ -2051,8 +2051,8 @@
     <path name="ultrasound-proximity-factory-func">
         <ctl name="Ultrasound Enable" value="On" />
         <ctl name="Ultrasound Mode" value="614" />
-        <ctl name="Ultrasound Debug Mode" value="1" />
-        <ctl name="Ultrasound Log Level" value="7" />
+        <ctl name="Ultrasound Debug Mode" value="0" />
+        <ctl name="Ultrasound Log Level" value="0" />
     </path>
 
 
@@ -2086,19 +2086,19 @@
 
     <path name="ultrasound-secondary-input">
     </path>
- 
+
     <path name="ultrasound-rampdown">
         <ctl name="Ultrasound RampDown" value="On" />
     </path>
-    
+
     <path name="ultrasound-screen-on">
          <ctl name="Ultrasound Event" value="1" />
     </path>
-    
+
     <path name="ultrasound-on">
         <ctl name="Ultrasound Rx Port" value="On" />
     </path>
-    
+
     <path name="ultrasound-suspend">
         <ctl name="Ultrasound Suspend" value="1" />
     </path>
@@ -2165,10 +2165,10 @@
 
     <path name="headphones-karaoke">
         <path name="headphones" />
-	<ctl name="RX1 MIX2 INP1" value="IIR1" /> 
-	<ctl name="RX2 MIX2 INP1" value="IIR1" /> 
-	<ctl name="IIR1 INP1 Volume" value="80" /> 
-	<ctl name="IIR1 INP2 Volume" value="80" /> 
+	<ctl name="RX1 MIX2 INP1" value="IIR1" />
+	<ctl name="RX2 MIX2 INP1" value="IIR1" />
+	<ctl name="IIR1 INP1 Volume" value="80" />
+	<ctl name="IIR1 INP2 Volume" value="80" />
     </path>
 
     <path name="true-native-mode">
@@ -2246,7 +2246,7 @@
         <path name="headphones-ce" />
         <path name="speaker" />
     </path>
-    
+
     <path name="speaker-and-headphones-no-ce">
     <path name="headphones-no-ce" />
     <path name="speaker" />
@@ -2389,6 +2389,12 @@
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
     </path>
 
+    <path name="voice-speaker-dmic-ef-echo">
+    <path name="speaker-dmic-endfire" />
+        <ctl name="AUDIO_REF_EC_UL1 MUX" value="I2S_RX" />
+        <ctl name="MultiMedia1 Mixer INT3_MI2S_TX" value="1" />
+    </path>
+
     <path name="dmic-endfire-liquid">
         <path name="handset-dmic-endfire" />
         <ctl name="IIR1 INP1 MUX" value="DEC1" />
@@ -2413,7 +2419,7 @@
     <path name="voice-dmic-ef">
         <path name="dmic-endfire" />
     </path>
-    
+
     	<path name="voice-speaker-tmic">
         <path name="dmic-endfire" />
     </path>
