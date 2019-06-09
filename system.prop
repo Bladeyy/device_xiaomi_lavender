@@ -219,8 +219,6 @@ persist.sys.df.extcolor.proc=0
 #thermal configs path
 sys.thermal.data.path=/data/vendor/thermal/
 
-ro.sf.lcd_density=440
-
 # ro.location properties below are used in conjunction
 # with NLP_MODE setting in /vendor/etc/izat.conf
 # either as the main network provider or as a fallback
