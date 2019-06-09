@@ -70,3 +70,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
    vendor.audio_hal.period_size=192 \
    vendor.audio_hal.period_multiplier=3 \
    vendor.audio.adm.buffering.ms=2
+
+#Density
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sf.lcd_density=409
