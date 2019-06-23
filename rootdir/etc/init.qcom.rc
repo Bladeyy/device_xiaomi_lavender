@@ -601,6 +601,7 @@ on property:vold.decrypt=trigger_restart_framework
     start config_bt_addr
     start wcnss-service
     start qcom-c_late-sh
+    restart vendor.audio-hal-2-0
 
 on property:persist.env.fastdorm.enabled=true
     setprop persist.radio.data_no_toggle 1
