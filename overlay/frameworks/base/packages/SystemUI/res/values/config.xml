@@ -63,4 +63,7 @@
         <item>-105</item>
         <item>-44</item>
     </integer-array>
+
+    <!-- Doze: check proximity sensor before pulsing? -->
+    <bool name="doze_proximity_check_before_pulse">false</bool>
 </resources>
