@@ -70,3 +70,17 @@ PRODUCT_PROPERTY_OVERRIDES += \
    vendor.audio_hal.period_size=192 \
    vendor.audio_hal.period_multiplier=3 \
    vendor.audio.adm.buffering.ms=2
+
+# Debug Options
+PRODUCT_PROPERTY_OVERRIDES += \
+   persist.dbg.ims_volte_enable=1 \
+   persist.dbg.volte_avail_ovr=1 \
+   persist.dbg.vt_avail_ovr=1 \
+   persist.dbg.wfc_avail_ovr=1
+
+# Radio Options
+PRODUCT_PROPERTY_OVERRIDES += \
+   persist.vendor.radio.rat_on=combine \
+   persist.vendor.radio.data_ltd_sys_ind=1 \
+   persist.vendor.radio.data_con_rprt=1 \
+   persist.radio.calls.on.ims=1
